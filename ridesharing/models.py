@@ -1,5 +1,5 @@
 from django.db import models
-from django.contrib.auth.models import User
+from django.contrib.auth.models import User, AbstractBaseUser
 # Create your models here.
 
 class Rider(models.Model):
@@ -23,21 +23,22 @@ class Rider(models.Model):
         return self.address
 
     def __str__(self):
-        return self.get_full_name()
+        return self.user.get_full_name()
+
 
 class Ride(models.Model):
 
     ridedmin = models.ForeignKey(Rider)
-    home = ridedmin.getHome()
+    # home = ridedmin.getHome()
 
     PLACE_CHOICES = (
-            ('Home', home),
+            ('Home', 'Home'),
             ('IIIT-Delhi', 'IIIT-Delhi'),
             ('Other', 'Other'),
         )
 
-    startPt = models.CharField('Starting point', choices=PLACE_CHOICES, null=False)
-    dest = models.CharField('Destination', choices=PLACE_CHOICES, null=False)
+    startPt = models.CharField('Starting point', max_length=20, choices=PLACE_CHOICES, null=False)
+    dest = models.CharField('Destination', max_length=20, choices=PLACE_CHOICES, null=False)
     time = models.DateTimeField('Departure time', null=False)
     cap = models.IntegerField('Maximum number of people in ride', null=False)
     addInfo = models.TextField('Additional info', max_length=200, blank=True)
