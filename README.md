@@ -4,7 +4,7 @@
 
 HitchHiker is a web app for sharing rides in a fun, easy and safe way. Our vision is to transform carpooling into a viable transportation alternative, one which allows passengers to travel with comfort and security, while saving costs and reducing fuel emissions significantly.
 
-The problem with most social ridesharing apps is that they group you with strangers. Hence for women, they're not a viable alternative to travelling alone, and not suitable for everyday commute for either gender. Making the ridesharing exclusive to a single organization is our solution to this problem, ensuring safety and familiarity.
+The problem with most social ridesharing apps is that they group you with strangers. Hence for women, they're not a viable alternative to travelling alone, and not suitable for everyday commute for either gender. Making ridesharing exclusive to a single organization is our solution to this problem, thus ensuring safety and familiarity.
 
 Seeing the problems day scholars face while commuting everyday to and fro college, we decided to implement a first version of HitchHiker exclusively for the students of IIIT Delhi. We are looking to expand to other colleges in the future as well!
 
