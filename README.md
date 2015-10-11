@@ -1,7 +1,5 @@
 #HitchHiker
 
-HitchHiker - Connecting co-workers and friends to share everyday journeys.
-
 **This is still a work in progress**
 
 HitchHiker is a web application created for people to share rides in a fun, easy and safe way. Our vision is to transform carpooling into a viable transportation alternative, one which allows passengers to travel with comfort and security, while saving costs and reducing fuel emissions significantly.
