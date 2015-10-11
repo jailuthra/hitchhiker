@@ -13,6 +13,7 @@ Seeing the problems day scholars face while commuting everyday to and fro colleg
 * Make sign-up form with organizational email validation
 * Fix 'Create a Ride' form
 * Refine ride-distance viability algorithm
+* Fix design (it currently works on BootStrap)
 
 #Installing
 * Install python3. `sudo apt-get install python3`
