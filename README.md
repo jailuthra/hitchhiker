@@ -2,7 +2,7 @@
 
 **This is still a work in progress**
 
-HitchHiker is a web application created for people to share rides in a fun, easy and safe way. Our vision is to transform carpooling into a viable transportation alternative, one which allows passengers to travel with comfort and security, while saving costs and reducing fuel emissions significantly.
+HitchHiker is a web app for people to share rides in a fun, easy and safe way. Our vision is to transform carpooling into a viable transportation alternative, one which allows passengers to travel with comfort and security, while saving costs and reducing fuel emissions significantly.
 
 The problem with most social ridesharing apps is that they group you with strangers. Hence for women, they're not a viable alternative to travelling alone, and not suitable for everyday commute for either gender. Making the ridesharing exclusive to a single organization is our solution to this problem, ensuring safety and familiarity.
 
