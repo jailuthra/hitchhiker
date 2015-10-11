@@ -18,7 +18,8 @@ def user_login(request):
     return render(request, 'ridesharing/login.html')
 
 
-# def sign_up(request):
+def sign_up(request):
+    return None
      
 
 @login_required(login_url = '/ridesharing/login/')
