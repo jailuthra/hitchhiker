@@ -3,7 +3,7 @@ from django.http import HttpResponse, HttpResponseRedirect
 from django.contrib.auth import authenticate, login
 from django.contrib.auth.decorators import login_required
 
-from .models import Rider, Ride#, RiderForm, RideForm
+from .models import Rider, Ride, RideForm
 # Create your views here.
 
 def user_login(request):
@@ -26,6 +26,7 @@ def sign_up(request):
 def index(request):
     return HttpResponse("Hello World!")
 
+
 @login_required(login_url = '/ridesharing/login/')
 def home(request):
 
@@ -37,12 +38,8 @@ def home(request):
 
         if startPt == 'Home':
             startPt = currRider.getAddress()
-        elif startPt == 'IIIT-Delhi':
-            startPt = 'IIIT-Delhi' #give proper coordinates
         if dest == 'Home':
             dest = currRider.getAddress()
-        elif dest == 'IIIT-Delhi':
-            dest = 'IIIT-Delhi'
 
         context_dict = {
                 'startPt': startPt,
@@ -54,5 +51,73 @@ def home(request):
 
 
 @login_required(login_url = '/ridesharing/login/')
+def rideFormPage(request):
+    
+    currRider = Rider.objects.get(user = request.user)
+
+    if request.method == 'POST':
+
+        form = RideForm(request.POST)
+        if form.is_valid():
+
+            startPt = form.cleaned_data['startPt']
+            dest = form.cleaned_data['dest']
+
+            if startPt == 'Home':
+                startPt = currRider.getAddress()
+            if dest == 'Home':
+                dest = currRider.getAddress()
+
+            time = form.cleaned_data['time']
+            cap = form.cleaned_data['cap']
+            addInfo = form.cleaned_data['addInfo']
+            ladies = form.cleaned_data['ladies']
+            
+            ride = Ride(
+                    ridemin = currRider,
+                    startPt = startPt,
+                    dest = dest,
+                    time = time,
+                    cap = cap,
+                    addInfo = addInfo,
+                    ladies = ladies,
+                )
+
+            ride.save()
+            # return HttpResponseRedirect('/ridesharing/home')
+            return render(request, 'ridesharing/home.html')
+    else:
+        form = RideForm()
+        return render(request, 'ridesharing/ride_form.html', {'form': form})
+
+
+############## TODO #############################
+def processRides(request, ride):
+    if request.METHOD == 'POST':
+        dist = request.POST['dist']
+        ride.strip(' km')
+        ride.dist = dist
+        ride.save()
+        return render(request, 'ridesharing/rides.html')
+    else:
+        context_dict = {
+                'source': ride.source,
+                'destination': ride.dest,
+            }
+        return render(request, 'ridesharing/findDist.html', context_dict)
+
+
+@login_required(login_url = '/ridesharing/login/')
 def rides(request):
-    return None 
+    currR = Entry.objects.latest()
+    rList = []
+    threshold = 2
+    for r in Rides.objects.all():
+        processRides(request, r)
+    for r in Rides.objects.all():
+        if abs(r.dist - currR.dist) <= threshold:
+            rList.append(r)
+############## TODO #############################
+    
+
+        

@@ -29,10 +29,19 @@ var distance = function(origin,destination){
 }
 
 
-distance("IIIT Delhi","Pitampura, delhi");
+distance({{ source }}, {{ destination }});
+//distance("IIIT Delhi", "Pitampura, Delhi")
+$(document).ready(function(){
+    document.getElementById('submit').submit();
+});
 </script>
 </head>
 <body>
-    <p id="dist"></p>
+    <form role="form" method="post" action="">
+        <textarea name="dist" class="form-control" id="dist"></textarea>
+        <button type="submit" id="submit"/>
+    </form>
+
+
 </body>
 </html>

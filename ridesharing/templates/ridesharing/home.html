@@ -1,7 +1,12 @@
 {% extends "base.html" %}
 
+    {% block staticstuff %}
+        {% load staticfiles %}
+        <script src="{% static 'ridesharing/startDest.js' %}"></script>
+    {% endblock %}
+
     {% block title %}
-        Hitchhiker | Home
+        HitchHiker | Home
     {% endblock %}
 
     {% block content %}
