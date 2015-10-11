@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+    {% block title %}
+        Hitchhiker | Home
+    {% endblock %}
+
+    {% block content %}
+
+    <div class="page-header">
+        <h2>Need a ride?</h2>
+    </div>
+
+    <form role="form" method="post" action="">
+
+        <p class="lead">Starting Point:</p>
+        <select name="startPt" class="form-control" id="startPt">
+            <option>Home</option>
+            <option>IIIT-Delhi</option>
+        </select>
+
+        <p class="lead">Destination:</p>
+        <select name="dest" class="form-control" id="dest">
+            <option>Enter Starting Point</option>
+        </select>
+
+        <button type="submit" class="btn btn-default" id="submit-button">Hitch!</button>
+
+    </form>
+
+    {% endblock %}

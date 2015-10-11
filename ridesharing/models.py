@@ -1,5 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User, AbstractBaseUser
+
+from django.forms import ModelForm
 # Create your models here.
 
 class Rider(models.Model):
@@ -19,7 +21,7 @@ class Rider(models.Model):
 
     REQUIRED_FIELDS = ['email', 'mobileNum', 'address', 'gender']
 
-    def getHome(self):
+    def getAddress(self):
         return self.address
 
     def __str__(self):
@@ -51,3 +53,13 @@ class Ride(models.Model):
     def __str__(self):
         retStr = startPt + " to " + dest
         return retStr
+
+class RiderForm(ModelForm):
+    class Meta:
+        model = Rider
+        fields = ['user','gender','address','mobileNum']
+
+class RideForm(ModelForm):
+    class Meta:
+        model = Ride
+        fields = ['startPt','dest','time','cap','addInfo','ladies']
