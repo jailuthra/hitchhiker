@@ -3,8 +3,12 @@ from django.http import HttpResponse, HttpResponseRedirect
 from django.contrib.auth import authenticate, login
 from django.contrib.auth.decorators import login_required
 
+# Needed for Google Maps API
+import requests, json
+
 from .models import Rider, Ride, RideForm
 # Create your views here.
+
 
 def user_login(request):
     if request.method == 'POST':
@@ -106,6 +110,23 @@ def processRides(request, ride):
             }
         return render(request, 'ridesharing/findDist.html', context_dict)
 
+def findDist(source, dest):
+    payload = {
+        'origins' : source,
+        'destinations' : dest,
+    }
+    api_url = 'https://maps.googleapis.com/maps/api/distancematrix/json'
+    r = requests.get(api_url, params=payload)
+    parsed_json = json.loads(r.text)
+    request_status = parsed_json['status']
+    if request_status != 'OK':
+        return None
+    dist_status = parsed_json['rows'][0]['elements'][0]['status']
+    if dist_status != 'OK':
+        return None
+    else:
+        distance = parsed_json['rows'][0]['elements'][0]['distance']
+        return distance['text']
 
 @login_required(login_url = '/ridesharing/login/')
 def rides(request):
